@@ -1,0 +1,100 @@
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Full Page Gradient Background */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #ff6ec7, #9b5cff);
+}
+
+/* Container Centering */
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card Styling */
+.card {
+  background: white;
+  width: 420px;
+  padding: 40px;
+  border-radius: 18px;
+
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Title */
+.card h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #3a2a6a;
+  font-weight: 600;
+}
+
+/* Input Group */
+.input-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Input Field */
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 15px;
+
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #9b5cff;
+  box-shadow: 0 0 6px rgba(155, 92, 255, 0.4);
+}
+
+/* Button */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #7b4dff, #ff5fcf);
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+/* Button Hover */
+button:hover {
+  transform: scale(1.03);
+  opacity: 0.95;
+}
