@@ -1,8 +1,13 @@
-const Dashboard = ({ user }) => {
+const Dashboard = ({ user, onLogout }) => {
   return (
-    <div>
-      <h1>Welcome, {user}!</h1>
-      <p>You have successfully accessed the SkyLine Analytics Platform.</p>
+    <div className="card">
+      <h2>Welcome, {user} 🎉</h2>
+
+      <p style={{ marginBottom: "20px", color: "#444" }}>
+        You have successfully accessed the SkyLine Analytics Platform.
+      </p>
+
+      <button onClick={onLogout}>Logout</button>
     </div>
   );
 };

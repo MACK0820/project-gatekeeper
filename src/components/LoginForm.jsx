@@ -9,8 +9,11 @@ const LoginForm = ({ onLogin }) => {
     password: ""
   });
 
+  const [error, setError] = useState("");
+
   const { username, password } = formData;
 
+  // Handle Input Change
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -18,11 +21,19 @@ const LoginForm = ({ onLogin }) => {
       ...formData,
       [name]: value
     });
+
+    setError("");
   };
 
+  // Handle Submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin({ username, password });
+
+    const success = onLogin({ username, password });
+
+    if (!success) {
+      setError("❌ Invalid username or password.");
+    }
   };
 
   return (
@@ -33,6 +44,7 @@ const LoginForm = ({ onLogin }) => {
           name="username"
           value={username}
           onChange={handleChange}
+          error={error}
         />
 
         <InputField
@@ -41,7 +53,10 @@ const LoginForm = ({ onLogin }) => {
           type="password"
           value={password}
           onChange={handleChange}
+          error={error}
         />
+
+        {error && <p className="error-text">{error}</p>}
 
         <Button text="Login" />
       </form>

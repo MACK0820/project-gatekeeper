@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
 /* Global Reset */
 * {
   margin: 0;
@@ -6,17 +8,49 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Full Page Gradient Background */
+/* Background Gradient */
 body {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background: linear-gradient(135deg, #ff6ec7, #9b5cff);
+  background: linear-gradient(
+    135deg,
+    #ff6ec7 0%,
+    #c86bff 50%,
+    #7b4dff 100%
+  );
+
+  overflow: hidden;
 }
 
-/* Container Centering */
+/* Decorative Glow Circles */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+body::before {
+  background: #ff5fcf;
+  top: -120px;
+  left: -120px;
+}
+
+body::after {
+  background: #7b4dff;
+  bottom: -120px;
+  right: -120px;
+}
+
+/* Center Container */
 .container {
   width: 100%;
   display: flex;
@@ -24,77 +58,145 @@ body {
   align-items: center;
 }
 
-/* Card Styling */
+/* Login Card */
 .card {
-  background: white;
-  width: 420px;
-  padding: 40px;
-  border-radius: 18px;
+  width: 430px;
+  padding: 45px 40px;
 
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.25);
+
   text-align: center;
+  position: relative;
+
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Glow Border (FIXED — DOES NOT BLOCK INPUTS) */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  padding: 2px;
+
+  background: linear-gradient(135deg, #ff5fcf, #7b4dff);
+
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  opacity: 0.85;
+
+  pointer-events: none; /* ✅ FIX: allows typing */
 }
 
 /* Title */
 .card h2 {
-  font-size: 28px;
-  margin-bottom: 30px;
-  color: #3a2a6a;
+  font-size: 30px;
   font-weight: 600;
+  color: #3a2a6a;
+  margin-bottom: 30px;
 }
 
 /* Input Group */
 .input-group {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   text-align: left;
 }
 
+/* Labels */
 .input-group label {
   font-size: 14px;
   font-weight: 500;
   color: #444;
-  display: block;
   margin-bottom: 6px;
+  display: block;
 }
 
-/* Input Field */
+/* Inputs */
 .input-group input {
   width: 100%;
-  padding: 12px 15px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  outline: none;
-  font-size: 15px;
+  padding: 13px 15px;
 
-  transition: 0.3s;
+  border-radius: 12px;
+  border: 1px solid rgba(180, 180, 180, 0.4);
+
+  font-size: 15px;
+  outline: none;
+
+  background: rgba(245, 245, 255, 0.75);
+
+  transition: all 0.3s ease;
 }
 
+/* Input Focus */
 .input-group input:focus {
   border-color: #9b5cff;
-  box-shadow: 0 0 6px rgba(155, 92, 255, 0.4);
+  box-shadow: 0px 0px 10px rgba(155, 92, 255, 0.5);
+  background: white;
+}
+
+/* Error Input */
+.input-error {
+  border: 1px solid red !important;
+  box-shadow: 0px 0px 8px rgba(255, 0, 0, 0.4);
+}
+
+/* Error Message */
+.error-text {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 /* Button */
 button {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
+  padding: 13px;
+  margin-top: 15px;
 
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
 
   background: linear-gradient(135deg, #7b4dff, #ff5fcf);
-  color: white;
 
+  color: white;
   font-size: 16px;
   font-weight: 600;
+
   cursor: pointer;
 
-  transition: 0.3s;
+  box-shadow: 0px 8px 18px rgba(123, 77, 255, 0.35);
+
+  transition: all 0.3s ease;
 }
 
-/* Button Hover */
+/* Hover */
 button:hover {
-  transform: scale(1.03);
-  opacity: 0.95;
+  transform: translateY(-3px);
+  box-shadow: 0px 12px 25px rgba(255, 95, 207, 0.45);
+}
+
+/* Active */
+button:active {
+  transform: scale(0.98);
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

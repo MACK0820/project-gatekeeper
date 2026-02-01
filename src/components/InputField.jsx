@@ -1,15 +1,22 @@
-const InputField = ({ label, name, value, onChange, type = "text" }) => {
+const InputField = ({
+  label,
+  name,
+  value,
+  onChange,
+  type = "text",
+  error
+}) => {
   return (
     <div className="input-group">
-      <label htmlFor={name}>{label}</label>
+      <label>{label}</label>
 
       <input
-        id={name}
         type={type}
         name={name}
         value={value}
         onChange={onChange}
         placeholder={`Enter your ${label.toLowerCase()}`}
+        className={error ? "input-error" : ""}
         required
       />
     </div>
